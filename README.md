@@ -1,2 +1,2 @@
 # ForcaGameCLI
-Jogo da forca feito em java.
+Projeto feito em java 
