@@ -13,57 +13,57 @@ public class Menu {
 		""";
 		System.out.println(Title_Asciiart);
 	}
-	void printBuddy(int pontuacao) {
-		if (pontuacao == 0) {
+	void printLifeStatus(int Tentativa) {
+		if (Tentativa == 7) {
 			System.out.println("=---");
 			System.out.println("|  |");
 			System.out.println("|");
 			System.out.println("|");
 			System.out.println("|");
 			System.out.println("A");
-		} else if (pontuacao == 1) {
+		} else if (Tentativa == 6) {
 			System.out.println("=---");
 			System.out.println("|  |");
 			System.out.println("|  O");
 			System.out.println("|");
 			System.out.println("|");
 			System.out.println("A");
-		} else if (pontuacao == 2) {
+		} else if (Tentativa == 5) {
 			System.out.println("=---");
 			System.out.println("|  |");
 			System.out.println("|  O");
 			System.out.println("| /");
 			System.out.println("|");
 			System.out.println("A");
-		} else if (pontuacao == 3) {
+		} else if (Tentativa == 4) {
 			System.out.println("=---");
 			System.out.println("|  |");
 			System.out.println("|  O");
 			System.out.println("| / ⧹");
 			System.out.println("|");
 			System.out.println("A");
-		} else if (pontuacao == 4) {
+		} else if (Tentativa == 3) {
 			System.out.println("=---");
 			System.out.println("|  |");
 			System.out.println("|  O");
 			System.out.println("| /|⧹");
 			System.out.println("|");
 			System.out.println("A");
-		} else if (pontuacao == 5) {
+		} else if (Tentativa == 2) {
 			System.out.println("=---");
 			System.out.println("|  |");
 			System.out.println("|  O");
 			System.out.println("| /|⧹");
 			System.out.println("| /");
 			System.out.println("A");
-		} else if (pontuacao == 6) {
+		} else if (Tentativa == 1) {
 			System.out.println("=---");
 			System.out.println("|  |");
 			System.out.println("|  O");
 			System.out.println("| /|⧹");
 			System.out.println("| / ");
 			System.out.println("A");
-		} else if (pontuacao == 7) {
+		} else if (Tentativa == 0) {
 			System.out.println("=---");
 			System.out.println("|  |");
 			System.out.println("|  O");
