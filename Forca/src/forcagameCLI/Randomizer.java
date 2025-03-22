@@ -8,19 +8,23 @@ public class Randomizer {
 			"Rua", "Gente", "Amigo",
 			"Festa","Beta","Pente"};
 	String[] palavrasUsadas = new String[palavras.length];
+	int usos = 0;
+	int tam = palavras.length;
 	
-	String pegarPalavraAleatoria(Random aleph) {
-		int numaleatorio = aleph.nextInt(0,palavras.length);
-		for (int i = 0;i<palavras.length;i++) {
-			if (palavras[numaleatorio] == palavrasUsadas[i]) {
-				pegarPalavraAleatoria(aleph);
-			} else if(i==palavras.length) {
-				return palavras[numaleatorio];
-			} else {
-				continue;
-			}
-		}
-		return palavras[numaleatorio];
+	String pegarPalavraAleatoria(Random random) {
+		 int NumR;
+		 boolean repetida;
+		 do {
+			 repetida = false;
+			 NumR = random.nextInt(0,tam);
+			 for (int i = 0; i < usos; i++) {
+				 if (palavras[NumR].equals(palavrasUsadas[i])) {
+					 repetida = true;
+				 }
+			 }
+		 } while (repetida);
+		 palavrasUsadas[usos] = palavras[NumR];
+		 usos++;
+		 return palavras[NumR];
 	}
-	
 }
