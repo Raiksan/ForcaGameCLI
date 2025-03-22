@@ -3,22 +3,18 @@ package forcagameCLI;
 public class Palavra {
 	
 	String palavra;
+	int TamString = palavra.length();
 	
 	Palavra(String s){
 		this.palavra = s;
 	}
 	
-	int verificarPal(String s, char a) {
-		int ponto = 0;
-		for (int i = 0; i<s.length();i++) {
-			if (a == s.charAt(i)) {
-				ponto++;
-			} else if(a != s.charAt(s.length()-1)) {
-				ponto--;
+	int verificarCarac (char a) {
+		for(int i = 0;i<TamString;i++) {
+			if (a==palavra.charAt(i)) {
+				return 1; // Direcionado para o numero de pontos
 			}
 		}
-		return ponto;
+		return -1; // Direcionado para tentativas
 	}
-	
-	
 }
