@@ -3,7 +3,6 @@ package forcagameCLI;
 public class Player {
 	
 	int Vida;
-	Palavra palavra;
 	
 	Player(){
 		this.Vida = 7;

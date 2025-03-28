@@ -1,15 +1,10 @@
 package forcagameCLI;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Menu {
 
-	Player p = new Player();
-	
-	Menu(Player p1){
-		this.p = p1;
-	}
+	Player p1 = new Player();
 	
 	void printTitle() {
 		String Title_Asciiart = """
@@ -23,21 +18,16 @@ public class Menu {
 		System.out.println(Title_Asciiart);
 	}
 	
-	void options(Scanner sc) {
+	void options(Scanner sc, Randomizer rr, Palavra palavra) {
 		int OP = -1;
 		do {
 			System.out.println("Insira entre as opções abaixo.");
 			System.out.println("1-Jogar, 2-Sair");
+			System.out.println("Sua opção:");
 			OP = sc.nextInt();
-			if (OP!=1||OP!=2) {
-				System.out.println("Insira entre as opções abaixo.");
-				System.out.println("1-Jogar, 2-Sair");
-				OP = sc.nextInt();
-			}
-			
 			switch (OP) {
 			case 1:
-				initGame(p);
+				initGame(sc,palavra);
 				break;
 			case 2:
 				System.out.println("Saindo...");
@@ -50,19 +40,19 @@ public class Menu {
 			} while (OP!=0);
 	}
 	
-	void initGame(Scanner sc,Randomizer rr) {
-		String s;
+	void initGame(Scanner sc, Palavra p) {
 		String a;
-		p.palavra = new Palavra(rr.pegarPalavraAleatoria());
+		p1 = new Player();
 		do {
-			System.out.println(p.palavra.caracteresValidos);
+			p1.printLifeStatus();
+			p.printValidCarac();
 			System.out.println("Insira um caractere: ");
 			a = sc.next();
-			if (p.palavra.verificarCarac(a.charAt(0))<0) {
-				p.Vida--;
+			if (p.verificarCarac(a.charAt(0))<0) {
+				p1.Vida--;
 			}
 			
-		} while (p.Vida!=0);
+		} while (p1.Vida!=0);
 		
 	}
 	
