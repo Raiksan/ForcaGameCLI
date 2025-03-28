@@ -2,63 +2,74 @@ package forcagameCLI;
 
 public class Player {
 	
-	void printLifeStatus(int Tentativa) {
-		if (Tentativa == 7) {
+	int Vida;
+	Palavra palavra;
+	
+	Player(){
+		this.Vida = 7;
+	}
+	
+	void printLifeStatus() {
+		if (Vida == 7) {
 			System.out.println("=---");
 			System.out.println("|  |");
 			System.out.println("|");
 			System.out.println("|");
 			System.out.println("|");
 			System.out.println("A");
-		} else if (Tentativa == 6) {
+		} else if (Vida == 6) {
 			System.out.println("=---");
 			System.out.println("|  |");
 			System.out.println("|  O");
 			System.out.println("|");
 			System.out.println("|");
 			System.out.println("A");
-		} else if (Tentativa == 5) {
+		} else if (Vida == 5) {
 			System.out.println("=---");
 			System.out.println("|  |");
 			System.out.println("|  O");
 			System.out.println("| /");
 			System.out.println("|");
 			System.out.println("A");
-		} else if (Tentativa == 4) {
+		} else if (Vida == 4) {
 			System.out.println("=---");
 			System.out.println("|  |");
 			System.out.println("|  O");
 			System.out.println("| / ⧹");
 			System.out.println("|");
 			System.out.println("A");
-		} else if (Tentativa == 3) {
+		} else if (Vida == 3) {
 			System.out.println("=---");
 			System.out.println("|  |");
 			System.out.println("|  O");
 			System.out.println("| /|⧹");
 			System.out.println("|");
 			System.out.println("A");
-		} else if (Tentativa == 2) {
+		} else if (Vida == 2) {
 			System.out.println("=---");
 			System.out.println("|  |");
 			System.out.println("|  O");
 			System.out.println("| /|⧹");
 			System.out.println("| /");
 			System.out.println("A");
-		} else if (Tentativa == 1) {
+		} else if (Vida == 1) {
 			System.out.println("=---");
 			System.out.println("|  |");
 			System.out.println("|  O");
 			System.out.println("| /|⧹");
 			System.out.println("| / ");
 			System.out.println("A");
-		} else if (Tentativa == 0) {
+		} else if (Vida == 0) {
 			System.out.println("=---");
 			System.out.println("|  |");
 			System.out.println("|  O");
 			System.out.println("| /|⧹");
 			System.out.println("| / ⧹");
 			System.out.println("A");
-		}	
+		}
+		
+		
 	}
 }
+
+
