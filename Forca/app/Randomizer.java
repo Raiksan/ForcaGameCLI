@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream:Forca/app/Randomizer.java
 import java.util.Random;
 
 public class Randomizer {
@@ -28,3 +29,21 @@ public class Randomizer {
 		 return palavras[NumR];
 	}
 }
+=======
+// Randomizer.java
+package forcagameCLI;
+
+import java.util.Random;
+
+public class Randomizer {
+    Random Aleatorio = new Random();
+    String[] palavras = {"Casa", "Comida", "Trabalho",
+                          "Dinheiro", "Celular", "Carro",
+                          "Rua", "Gente", "Amigo",
+                          "Festa", "Beta", "Pente"};
+    
+    String pegarPalavraAleatoria() {
+        return palavras[Aleatorio.nextInt(palavras.length)];
+    }
+}
+>>>>>>> Stashed changes:Forca/src/forcagameCLI/Randomizer.java

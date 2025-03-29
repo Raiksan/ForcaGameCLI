@@ -41,17 +41,28 @@ public class Menu {
 	void initGame(Scanner sc, Palavra p) {
 		String a;
 		p1 = new Player();
+	
 		do {
 			p1.printLifeStatus();
 			p.printValidCarac();
 			System.out.println("Insira um caractere: ");
-			a = sc.next();
-			if (p.verificarCarac(a.charAt(0))<0) {
+			
+			a = sc.next(); // Captura apenas um caractere
+	
+			if (a.length() > 0 && p.verificarCarac(a.charAt(0)) < 0) {
 				p1.Vida--;
 			}
-			
-		} while (p1.Vida!=0);
-		
-	}
 	
+<<<<<<< Updated upstream:Forca/app/Menu.java
 }
+=======
+			if (p.palavraCompleta()) {
+				System.out.println("Parabéns! Você acertou a palavra: " + p.palavra);
+				return;
+			}
+		} while (p1.Vida != 0);
+		
+		System.out.println("Game Over! A palavra era: " + p.palavra);
+	}
+}	
+>>>>>>> Stashed changes:Forca/src/forcagameCLI/Menu.java
