@@ -1,14 +1,15 @@
-package forcagameCLI;
-
-import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
 	public static int pontuacao;
 	public static void main(String[] args) {
-		Random Aleatorio = new Random();
+		
+		Scanner sc = new Scanner(System.in);
 		Randomizer rr = new Randomizer();
+		Palavra palavra = new Palavra(rr.pegarPalavraAleatoria());
 		Menu m = new Menu();
 		m.printTitle();
+		m.options(sc,rr,palavra);
 	}
 
 }
