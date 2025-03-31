@@ -4,7 +4,7 @@
 //
 
 public class Player {
-    int Vida = 7;
+    int Vida = 6;
 
     Player() {
     }
