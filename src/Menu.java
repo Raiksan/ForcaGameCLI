@@ -22,6 +22,7 @@ public class Menu {
             switch (var4) {
                 case 1:
                     this.initGame(var1, var3);
+                    var3 = new Palavra(var2.pegarPalavraAleatoria());
                     break;
                 case 2:
                     System.out.println("Saindo...");
