@@ -5,7 +5,7 @@ public class Randomizer {
     String[] palavras = new String[]{"Casa", "Comida", "Trabalho", "Dinheiro", "Celular", "Carro", "Rua", "Gente", "Amigo", "Festa", "Beta", "Pente"};
     // Lista de palavras que podem ser escolhidas aleatoriamente no jogo
 
-    String[] palavrasUsadas;  // Array para armazenar as palavras que já foram sorteadas
+    String[] palavrasUsadas;  // Array para armazenar as palavras que já foram sorteadas.
     int usos;  // Contador de palavras usadas
     int tam;   // Tamanho total da lista de palavras
 

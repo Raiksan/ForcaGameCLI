@@ -2,7 +2,7 @@
 import java.util.Scanner;
 
 public class Main {
-    // Variável estática para armazenar a pontuação do jogo
+    // Variável estática para armazenar a pontuação do jogo.
     public static int pontuacao;
 
     // Construtor da classe Main. Neste caso, o construtor não faz nada.

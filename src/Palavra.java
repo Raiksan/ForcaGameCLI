@@ -3,7 +3,7 @@ public class Palavra {
     int TamString;  // Armazena o tamanho da palavra
     char[] caracteresValidos;  // Array que guarda os caracteres válidos ou adivinhados corretamente (inicializados com '_')
 
-    // Construtor da classe Palavra, que inicializa a palavra e o array de caracteres válidos
+    // Construtor da classe Palavra, que inicializa a palavra e o array de caracteres válidos.
     Palavra(String var1) {
         this.palavra = var1;  // Atribui a palavra passada como argumento
         this.TamString = this.palavra.length();  // Define o tamanho da palavra

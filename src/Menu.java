@@ -22,7 +22,7 @@ public class Menu {
             System.out.println("Insira entre as opções abaixo.");
             System.out.println("1-Jogar, 2-Sair");  // Opções disponíveis para o jogador
             System.out.println("Sua opção:");
-            var4 = var1.nextInt();  // Lê a escolha do jogador
+            var4 = var1.nextInt();  // Lê a escolha do jogador.
 
             // Lógica de decisão baseada na opção escolhida
             switch (var4) {

@@ -4,7 +4,7 @@ public class Player {
     int Vida = 6;  // Armazena o número de vidas do jogador (começa com 6)
     ArrayList<Character> letrasTentadas = new ArrayList<>();  // Lista para armazenar as letras já tentadas
 
-    // Construtor da classe Player (não há inicializações específicas, pois as variáveis já são definidas no código)
+    // Construtor da classe Player (não há inicializações específicas, pois as variáveis já são definidas no código).
     Player() {
     }
 
