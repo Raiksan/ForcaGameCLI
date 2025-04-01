@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="forca-java:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/forca_java_jar</output-path>
+    <root id="archive" name="forca-java.jar">
+      <element id="module-output" name="forca-java" />
+    </root>
+  </artifact>
+</component>
