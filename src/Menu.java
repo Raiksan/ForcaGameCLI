@@ -4,7 +4,9 @@ import java.util.Scanner;    // Importa a classe Scanner para capturar entradas 
 public class Menu {
     Player p1 = new Player(); // Cria um objeto Player para controlar o estado do jogador (vidas)
 
+    final String GREEN_BOLD_BRIGHT = "\033[1;92m";
     final String WHITE_BOLD_BRIGHT = "\033[1;97m";
+    final String RED_BOLD_BRIGHT = "\033[1;91m";
     public static final String RESET = "\033[0m";
 
 
@@ -24,7 +26,7 @@ public class Menu {
 
         do {
             System.out.println("Insira entre as opções abaixo.");
-            System.out.println("1-Jogar, 2-Sair");  // Opções disponíveis para o jogador
+            System.out.println(GREEN_BOLD_BRIGHT + "1-Jogar " + RED_BOLD_BRIGHT+ "2-Sair" + RESET);  // Opções disponíveis para o jogador
             System.out.println("Sua opção:");
             var4 = var1.nextInt();  // Lê a escolha do jogador.
 
