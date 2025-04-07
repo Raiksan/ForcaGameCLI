@@ -7,32 +7,7 @@ public class Player {
     Player() {
     }
 
-    // Adiciona uma letra na lista de tentativas, se ainda não foi tentada
-    void adicionarTentativa(char letra) {
-        if (!jaTentouLetra(letra)) {
-            letrasTentadas[tentativas] = letra;
-            tentativas++;
-        }
-    }
 
-    // Verifica se uma letra já foi tentada
-    boolean jaTentouLetra(char letra) {
-        for (int i = 0; i < tentativas; i++) {
-            if (letrasTentadas[i] == letra) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    // Exibe todas as letras já tentadas
-    void mostrarLetrasTentadas() {
-        System.out.print("Letras tentadas: ");
-        for (int i = 0; i < tentativas; i++) {
-            System.out.print(letrasTentadas[i] + " ");
-        }
-        System.out.println();
-    }
 
     // Mostra o status do enforcado de acordo com a vida restante
     void printLifeStatus() {

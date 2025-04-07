@@ -2,15 +2,13 @@
 import java.util.Scanner;
 
 public class Main {
-    // Variável estática para armazenar a pontuação do jogo.
-    public static int pontuacao;
 
     // Construtor da classe Main. Neste caso, o construtor não faz nada.
     public Main() {
     }
 
     // Metodo principal, onde a execução do programa começa
-    public static void main(String[] var0) {
+    public static void main(String[] args) {
         // Cria um objeto Scanner para ler a entrada do usuário
         Scanner var1 = new Scanner(System.in);
 
