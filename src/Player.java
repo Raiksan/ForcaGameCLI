@@ -1,37 +1,41 @@
-import java.util.ArrayList;
-
 public class Player {
-    int Vida = 6;  // Armazena o número de vidas do jogador (começa com 6)
-    ArrayList<Character> letrasTentadas = new ArrayList<>();  // Lista para armazenar as letras já tentadas
+    int Vida = 6;  // Número de vidas do jogador
+    char[] letrasTentadas = new char[26];  // Suporta até 26 letras (alfabeto inteiro)
+    int tentativas = 0;  // Quantidade de letras já tentadas
 
-    // Construtor da classe Player (não há inicializações específicas, pois as variáveis já são definidas no código).
+    // Construtor da classe Player
     Player() {
     }
 
-    // Metodo para adicionar uma letra na lista de tentativas, caso não tenha sido tentada antes
+    // Adiciona uma letra na lista de tentativas, se ainda não foi tentada
     void adicionarTentativa(char letra) {
-        if (!letrasTentadas.contains(letra)) {
-            letrasTentadas.add(letra);  // Adiciona a letra à lista de tentativas
+        if (!jaTentouLetra(letra)) {
+            letrasTentadas[tentativas] = letra;
+            tentativas++;
         }
     }
 
-    // Metodo para verificar se uma letra já foi tentada
+    // Verifica se uma letra já foi tentada
     boolean jaTentouLetra(char letra) {
-        return letrasTentadas.contains(letra);  // Retorna verdadeiro se a letra já foi tentada
+        for (int i = 0; i < tentativas; i++) {
+            if (letrasTentadas[i] == letra) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    // Metodo para exibir todas as letras já tentadas
+    // Exibe todas as letras já tentadas
     void mostrarLetrasTentadas() {
         System.out.print("Letras tentadas: ");
-        for (char letra : letrasTentadas) {
-            System.out.print(letra + " ");  // Exibe cada letra tentada
+        for (int i = 0; i < tentativas; i++) {
+            System.out.print(letrasTentadas[i] + " ");
         }
-        System.out.println();  // Nova linha após a lista de letras
+        System.out.println();
     }
 
-    // Metodo para mostrar o status da vida do jogador, representando o enforcado
+    // Mostra o status do enforcado de acordo com a vida restante
     void printLifeStatus() {
-        // Cada condição abaixo exibe uma representação gráfica do "enforcado" conforme as vidas restantes
         if (this.Vida == 6) {
             System.out.println("=---");
             System.out.println("|  |");
@@ -77,9 +81,9 @@ public class Player {
         } else if (this.Vida == 0) {
             System.out.println("=---");
             System.out.println("|  |");
-            System.out.println("|  O");  // Cabeça
-            System.out.println("| /|⧹");  // Braços e pernas
-            System.out.println("| / ⧹");  // Corpo e pernas completas (morto)
+            System.out.println("|  O");
+            System.out.println("| /|⧹");
+            System.out.println("| / ⧹");
             System.out.println("A");
         }
     }

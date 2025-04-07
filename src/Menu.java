@@ -7,7 +7,7 @@ public class Menu {
     final String GREEN_BOLD_BRIGHT = "\033[1;92m";
     final String WHITE_BOLD_BRIGHT = "\033[1;97m";
     final String RED_BOLD_BRIGHT = "\033[1;91m";
-    public static final String RESET = "\033[0m";
+    final String RESET = "\033[0m";
 
 
     // Construtor da classe Menu (não faz nada nesse caso)
@@ -45,68 +45,74 @@ public class Menu {
         } while (var4 != 0);  // O laço continua até o jogador escolher uma opção válida
     }
 
-    // Função que inicia o jogo, controlando o fluxo do jogo e a interação com o jogador
     void initGame(Scanner scanner, Palavra palavra) {
-        this.p1 = new Player();  // Reinicia o objeto Player
-        ArrayList<Character> letrasTentadas = new ArrayList<>();  // Lista para armazenar as letras tentadas
+        this.p1 = new Player();  // Reinicia o jogador
+        char[] letrasTentadas = new char[26];  // Suporta até 26 letras diferentes
+        int tentativas = 0;  // Conta quantas letras já foram tentadas
 
         do {
-            this.p1.printLifeStatus();  // Exibe o status de vidas do jogador
-            palavra.printValidCarac();  // Exibe a palavra com os caracteres válidos (não revelados)
+            this.p1.printLifeStatus();  // Mostra status de vida
+            palavra.printValidCarac();  // Mostra palavra com letras ocultas
 
-            // Exibe as letras que o jogador já tentou
+            // Mostrar letras já tentadas
             System.out.print("Letras tentadas: ");
-            for (char letra : letrasTentadas) {
-                System.out.print(letra + " ");  // Imprime todas as letras tentadas até o momento
+            for (int i = 0; i < tentativas; i++) {
+                System.out.print(letrasTentadas[i] + " ");
             }
-            System.out.println();  // Nova linha para melhorar a visualização
+            System.out.println();
 
+            // Captura a letra
             System.out.println("Insira um caractere: ");
-            String scannerInput = scanner.next().toLowerCase();  // Lê a entrada do jogador e converte para minúsculo
-            char letra = scannerInput.charAt(0);  // Extrai o primeiro caractere da entrada
+            String scannerInput = scanner.next().toLowerCase();
+            char letra = scannerInput.charAt(0);
 
-            // Verifica se a letra já foi tentada
-            if (letrasTentadas.contains(letra)) {
+            // Verifica se já foi tentada
+            boolean jaTentada = false;
+            for (int i = 0; i < tentativas; i++) {
+                if (letrasTentadas[i] == letra) {
+                    jaTentada = true;
+                    break;
+                }
+            }
+
+            if (jaTentada) {
                 System.out.println("Você já tentou essa letra! Tente outra.");
-                continue;  // Se a letra já foi tentada, reinicia o laço sem reduzir a vida
+                continue;
             }
 
-            // Adiciona a letra tentada à lista de tentativas
-            letrasTentadas.add(letra);
+            // Adiciona letra na lista
+            letrasTentadas[tentativas] = letra;
+            tentativas++;
 
-            // Verifica se a letra está na palavra
+            // Verifica acerto
             if (palavra.verificarCarac(letra) < 0) {
-                --this.p1.Vida;  // Se a letra não estiver na palavra, reduz uma vida
+                this.p1.Vida--;
             }
 
-            // Verifica se o jogador completou a palavra
             if (palavra.palavraCompleta()) {
                 System.out.println("Parabéns! Você acertou a palavra: " + palavra.palavra);
-                return;  // Se a palavra for completada, o jogo termina
+                return;
             }
 
-        } while (this.p1.Vida != 0);  // O jogo continua até o jogador perder todas as vidas
+        } while (this.p1.Vida != 0);
 
-        // Exibe a mensagem de derrota quando o jogador perde todas as vidas
+        // Derrota
         System.out.println("Você perdeu todas as suas vidas! A palavra era: " + palavra.palavra);
-
-        // Exibe uma arte em ASCII quando o jogador perde
-        System.out.println
-                ("""
-                        ⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⣀⣀⣀⡀⢀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣷⡀⢿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⡿⠿⠿⠿⠿⢿⣿⣧⠈⢿⣿⣿⡄⠀⠀⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣤⣤⣤⣤⣤⣼⣿⣿⣧⠈⢿⣿⣿⡄⠀⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣦⣤⣤⣤⣤⣼⣿⣿⣿⡇⢈⣉⣉⣉⠀⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⢸⣿⣿⡏⠀⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀⣿⣿⣿⠃⠀⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⢰⣿⣿⡟⠀⠀⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⣼⣿⣿⠇⠀⠀⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⠃⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⡿⠀⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠛⠛⠛⠛⠛⠛⠀⠘⠛⠛""");
+        System.out.println("""
+            ⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⣀⣀⣀⡀⢀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀
+            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣷⡀⢿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀
+            ⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⡿⠿⠿⠿⠿⢿⣿⣧⠈⢿⣿⣿⡄⠀⠀⠀⠀⠀⠀
+            ⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣤⣤⣤⣤⣤⣼⣿⣿⣧⠈⢿⣿⣿⡄⠀⠀⠀⠀⠀
+            ⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣦⣤⣤⣤⣤⣼⣿⣿⣿⡇⢈⣉⣉⣉⠀⠀⠀⠀⠀
+            ⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⢸⣿⣿⡏⠀⠀⠀⠀⠀
+            ⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀⣿⣿⣿⠃⠀⠀⠀⠀⠀
+            ⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⢰⣿⣿⡟⠀⠀⠀⠀⠀⠀
+            ⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⣼⣿⣿⠇⠀⠀⠀⠀⠀⠀
+            ⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀
+            ⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀
+            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⠃⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀
+            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⡿⠀⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀
+            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀
+            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠛⠛⠛⠛⠛⠛⠀⠘⠛⠛""");
     }
 }
